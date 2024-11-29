@@ -4,10 +4,9 @@
 
 1. [Introduction](#introduction)
 2. [Configuration du routeur](#configuration-du-routeur)
-3. [Configuration du switch](#configuration-du-switch)
+3. [Configuration du switch](#configuration-du-node1)
 4. [Serveur DHCP](#serveur-dhcp)
 5. [Table ARP et Spoofing](#table-arp-et-spoofing)
-6. [Prochaines étapes](#prochaines-étapes)
 
 ---
 
@@ -40,7 +39,7 @@
   64 bytes from par21s22-in-f14.1e100.net (142.250.178.142): icmp_seq=3 ttl=127 time=35.2 ms
   ```
 
-### Interface 2 : LAN avec IP statique (ens36)
+### Interface 2 : LAN avec IP statique (Routeur)
 
 - **Configuration :**
 
@@ -89,6 +88,8 @@
     ```
 
 ---
+
+## Configuration du node1
 
 ### IP statique de node 1
 
