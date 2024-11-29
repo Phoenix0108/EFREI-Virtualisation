@@ -43,6 +43,7 @@
 ### Interface 2 : LAN avec IP statique (ens36)
 
 - **Configuration :**
+
   ```bash
   NAME=ens36
   DEVICE=ens36
@@ -51,8 +52,11 @@
   IPADDR=10.2.1.254
   NETMASK=255.255.255.0
   ```
+
 - **Validation :**
+
   - Adresse active :
+
     ```bash
     ip a
     1: lo: <LOOPBACK,UP,LOWER_UP> mtu 65536 qdisc noqueue state UNKNOWN group default qlen 1000
@@ -76,7 +80,9 @@
         inet6 fe80::20c:29ff:fec8:f0fb/64 scope link
             valid_lft forever preferred_lft forever
     ```
+
   - Masquerading activé (COURS):
+
     ```bash
     sudo firewall-cmd --add-masquerade
     sudo firewall-cmd --add-masquerade --permanent
@@ -154,6 +160,7 @@
 ## Vérification du switch
 
 - **Table CAM :**
+
   ```bash
   show mac address-table
   Vlan    Mac Address       Type        Ports
