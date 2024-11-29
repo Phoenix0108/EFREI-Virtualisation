@@ -27,14 +27,13 @@ Les objectifs principaux sont :
 ### Interface 1 : Internet via DHCP (ens35)
 
 - **Configuration :**
+
   ```bash
   NAME=ens35
   DEVICE=ens35
   BOOTPROTO=dhcp
   ONBOOT=yes
   ```
-
-````
 
 - **Validation :**
   - `ping google.com` fonctionnel :
@@ -155,4 +154,7 @@ Les objectifs principaux sont :
   ```
 
 ---
-````
+
+```
+
+```
