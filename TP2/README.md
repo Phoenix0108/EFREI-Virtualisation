@@ -4,7 +4,7 @@
 
 1. [Introduction](#introduction)
 2. [Configuration du routeur](#configuration-du-routeur)
-3. [Configuration du switch](#configuration-du-node1)
+3. [Configuration du node1](#configuration-du-node1)
 4. [Serveur DHCP](#serveur-dhcp)
 5. [Table ARP et Spoofing](#table-arp-et-spoofing)
 
