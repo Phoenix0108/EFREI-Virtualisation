@@ -178,6 +178,7 @@
 ### Configuration de l'interface (ens32)
 
 - **Statique :**
+
   ```bash
   NAME=ens32
   DEVICE=ens32
@@ -190,6 +191,7 @@
 ### Configuration DHCP
 
 - **Fichier `/etc/dhcp/dhcpd.conf` :**
+
   ```bash
   default-lease-time 600;
   max-lease-time 7200;
@@ -205,9 +207,11 @@
 ### Validation
 
 - **Lancement du service :**
+
   ```bash
   systemctl enable --now dhcpd
   ```
+
 - **Test client DHCP (`node1.tp2.efrei`) :**
 
   - IP réinitialisé pour le test 'node1.tp2.efrei':
@@ -293,6 +297,7 @@
   ```
 
 - **Résultat (table ARP de victime):**
+
   ```bash
   arp
   00:0c:29:c1:9a:96  10.2.1.254 expires in 114 seconds
