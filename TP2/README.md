@@ -152,9 +152,3 @@ Les objectifs principaux sont :
   arp
   00:0c:29:c1:9a:96  10.2.1.254 expires in 114 seconds
   ```
-
----
-
-```
-
-```
