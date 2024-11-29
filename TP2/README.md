@@ -1,6 +1,3 @@
-Voici le contenu structuré pour un fichier `README.md` :
-
-````markdown
 # TP Réseau : Configuration et Tests (TP2 - EFREI)
 
 ## Table des matières
@@ -36,6 +33,7 @@ Les objectifs principaux sont :
   BOOTPROTO=dhcp
   ONBOOT=yes
   ```
+
 ````
 
 - **Validation :**
@@ -157,3 +155,4 @@ Les objectifs principaux sont :
   ```
 
 ---
+````
