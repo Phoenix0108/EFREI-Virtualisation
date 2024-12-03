@@ -320,7 +320,7 @@
     Il est éssentiels d'activer l'ip forwarding pour relayer le trafic.
     `echo 1` permet d'activer l'ip forwarding dans le fichier
    
-    - Commande arpspoofing 
+    - Commande arpspoofing :
    
     ```bash
     #ARP Spoofing de la machine Node1
@@ -344,7 +344,7 @@
     0:c:29:c1:9a:96 0:c:29:c8:f0:fb 0806 42: arp reply 10.2.1.13 is-at 0:c:29:c1:9a:96
     ```
 
-    - Ping de Node1 vers routeur
+    - Ping de Node1 vers routeur :
    
     ```bash
     ping 10.2.1.254
@@ -354,7 +354,7 @@
     84 bytes from 10.2.1.254 icmp_seq=3 ttl=64 time=10.371 ms
     ```
 
-    - Ping de Node1 vers routeur
+    - Ping de Node1 vers routeur :
    
     ```bash
     ping 10.2.1.13
