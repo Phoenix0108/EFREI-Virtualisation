@@ -250,24 +250,24 @@
 
   - Bonus : Gateway
 
-  ```bash
-    # create new
-    #DNS
-    option domain-name-servers 1.1.1.1;
-    # default lease time
-    default-lease-time 600;
-    # max lease time
-    max-lease-time 7200;
-    # this DHCP server to be declared valid
-    authoritative;
-    # specify network address and subnetmask
-    subnet 10.2.1.0 netmask 255.255.255.0 {
-        # specify the range of lease IP address
-        range dynamic-bootp 10.2.1.10 10.2.1.50;
-        option broadcast-address 10.1.1.255;
-        option routers 10.2.1.254;
-    }
-  ```
+    ```bash
+      # create new
+      #DNS
+      option domain-name-servers 1.1.1.1;
+      # default lease time
+      default-lease-time 600;
+      # max lease time
+      max-lease-time 7200;
+      # this DHCP server to be declared valid
+      authoritative;
+      # specify network address and subnetmask
+      subnet 10.2.1.0 netmask 255.255.255.0 {
+          # specify the range of lease IP address
+          range dynamic-bootp 10.2.1.10 10.2.1.50;
+          option broadcast-address 10.1.1.255;
+          option routers 10.2.1.254;
+      }
+    ```
 
 ---
 
