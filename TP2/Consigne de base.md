@@ -53,7 +53,7 @@ On va encore tout faire avec Rocky Linux (ou l'OS de votre choix), toujours la m
 
 🌞 **Configuration de `router.tp2.efrei`**
 
-- l'interface de `router.tp2.efrei` qui est branchée au NAT doit être configurée automatiquement *via* DHCP, la magie de GNS :)
+- l'interface de `router.tp2.efrei` qui est branchée au NAT doit être configurée automatiquement _via_ DHCP, la magie de GNS :)
   - c'est indiqué dans le [mémo Rocky](../../memo/rocky_network.md) comment setup une interface pour qu'elle récup une IP en DHCP
   - une fois qu'elle a récupéré une IP, prouvez que vous avez un accès internet en une commande `ping`
 - l'autre interface de `router.tp2.efrei` sera configurée statiquement
@@ -167,16 +167,37 @@ Une fois l'info obtenue, l'info "telle IP correspond à telle MAC" est stockée 
 
 ## 2. ARP poisoning
 
-🌞 **Exécuter un simple ARP poisoning**
+**Insérer une machine attaquante dans la topologie. Un Kali linux, ou n'importe quel autre OS de votre choix.**
 
-- pas de man in the middle ici ou quoique ce soit, rien d'extrêmement poussé, mais simplement : écrire arbitrairement dans la table ARP de quelqu'un d'autre
-- il "suffit" d'envoyer un seul message ARP pour forcer l'écriture dans la table ARP de la machine qui reçoit votre message
-- je vous laisse vous renseigner par vous-mêmes un peu pour cette partie !
-- le but : écrivez dans la table ARP de `node1` que l'adresse `10.2.1.254` correspond à l'adresse MAC de votre choix
-  - **cela a pour conséquence que vous pouvez usurper l'identité de `10.2.1.254` (c'est le routeur) auprès de `node1`**. Stylish.
+🌞 **Envoyer une trame ARP arbitraire**
 
-> C'est faisable super facilement en une seule commande shell : `arping`. Je recommande pas Rocky pour utiliser ça, ce sera chiant de l'installer je pense. Et bien sûr, n'hésitez pas à me contacter.
+- depuis la machine attaquante, envoyer un message à la victime (`node1.tp2.efrei`)
+- en utilisant la commande `arping`
+- écrivez des données arbitraires dans la table ARP de `node1.tp2.efrei`
 
-➜ Bah en bonus, le man-in-the-middle c'est vraiment très simple hein... juste à spoof aurpès de deux victimes :d
+🌞 **Mettre en place un ARP MITM**
 
-![APR sniffed ?](img/arp_sniff.jpg)
+- setup un MITM (man-in-the-middle) à l'aide d'ARP poisoning
+- il faut se mettre entre `node1.tp2.efrei` et `router.tp2.efrei`
+- donc il faut ARP spoof pour que :
+  - `node1` pense que la MAC de `router` c'est la MAC de l'attaquant
+  - `router` pense que la MAC de `node1` c'est la MAC de l'attaquant
+  - ainsi, tous les messages échangés entre les deux, seront en réalité envoyés à l'attaquant
+- utilisez la commande `arpspoof` pour faire ça
+  - une seule commande suffit pour mettre en place toute l'attaque
+
+> Il sera nécessaire d'activer l'IPv4 forwarding sur la machine attaquante. L'IPv4 forwarding permet à la machine attaquante d'accepter les paquets IP qui ne lui sont pas destinées (c'est à dire : agir comme un routeur).
+
+🌞 **Capture Wireshark `arp_mitm.pcap`**
+
+- la victime ping `1.1.1.1`
+- la capture Wireshark est réalisée depuis la machine attaquante
+- on doit voir les pings de la victime qui circulent par la machine attaquante
+
+🌞 **Réaliser la même attaque avec Scapy**
+
+- un ptit script Python qui met en palce exactement la même attaque
+- l'intérêt est de commencer à utiliser Scapy avec une attaque que vous connaissez déjà (donc la seule barrière doit être l'apprentissage de la yntaxe Scapy)
+- remettre le script `arp_mitm.py` dans le dépôt git de rendu
+
+![ARP sniffed ?](img/arp_sniff.jpg)
