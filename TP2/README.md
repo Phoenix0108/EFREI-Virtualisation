@@ -7,6 +7,7 @@
 3. [Configuration du node1](#configuration-du-node1)
 4. [Serveur DHCP](#serveur-dhcp)
 5. [Table ARP et Spoofing](#table-arp-et-spoofing)
+6. [MITM ARP](#mitm-arp)
 
 ---
 
@@ -354,8 +355,4 @@
 
 - **Same avec Scapy**
 
-  - Programme Scapy pour éffectuer la même attaque :
-
-  ```py
-
-  ```
+  - Programme Scapy pour éffectuer la même attaque : [ICI](https://github.com/Phoenix0108/EFREI-Virtualisation/blob/main/TP2/README.md#table-arp-et-spoofing)
