@@ -312,7 +312,7 @@
   - **ARP Spoofing en continue**
     
     - Activation de l'ip forwarding
-    - 
+
     ```bash
     echo 1 | sudo tee /proc/sys/net/ipv4/ip_forward
     sudo sysctl -p #Activation de la mise a jour
