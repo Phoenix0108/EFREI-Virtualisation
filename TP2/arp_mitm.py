@@ -1,4 +1,4 @@
-from scapy.all import ARP, send
+from scapy.all import *
 import os
 
 os.system("echo 1 > /proc/sys/net/ipv4/ip_forward")
