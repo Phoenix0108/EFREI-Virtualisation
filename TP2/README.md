@@ -365,6 +365,8 @@
     ```
 
   - **Wireshark**
+    - Ping du Node1 vers le routeur : [ICI](https://github.com/Phoenix0108/EFREI-Virtualisation/blob/main/TP2/Wireshark/MITM_Node1.pcapng)
+    - Ping du routeur vers Node1 : [ICI](https://github.com/Phoenix0108/EFREI-Virtualisation/blob/main/TP2/Wireshark/MITM_Routeur.pcapng)
 
 
     
